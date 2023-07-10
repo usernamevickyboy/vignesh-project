@@ -1,0 +1,25 @@
+create database BANK;
+use bank;
+create table CUSTOMERDETIAL(Acc_no int primary key , Acc_name varchar(50) not null,pin_no int unique,pan_no varchar (8)not null unique,balance int not null,address varchar(20),acc_type varchar(20)not null) ;
+create table BANKDETIAL(e_id int primary key,bank_name varchar(20),IFSC_CODE int not null,branch varchar (10) not null,Phone_no int not null,pincode int not null,e_salary int not null);
+insert into bankdetial values(1,"SBI",12,"salem",999999,606202,20000);
+insert into bankdetial values(2,"ICIC",11,"salem",899999,606202,22500);
+insert into bankdetial values(3,"HDFC",13,"salem",799999,606202,21000);
+insert into CUSTOMERDETIAL values(12345,"Vignesh",1511,"Vicky123",25000,"salem","benificiary");
+insert into CUSTOMERDETIAL values(12675,"Sanjai",1212,"Sanv143",250000,"namakkal","benificiary");
+insert into CUSTOMERDETIAL values(12445,"Sudan",1410,"Suda153",50000,"kallai","benificiary");
+insert into CUSTOMERDETIAL values(1235,"Vimal",1507,"Vimal126",250090,"mettur","Joint");
+select * from customerdetial;
+select * from bankdetial;
+SELECT
+  customerdetial.Acc_no,
+  customerdetial.Acc_name,
+  customerdetial.balance,
+  bankdetial.bank_name,
+  bankdetial.IFSC_CODE
+FROM
+  customerdetial
+INNER JOIN
+  bankdetial
+ON
+  customerdetial.Acc_no = bankdetial.e_id;
